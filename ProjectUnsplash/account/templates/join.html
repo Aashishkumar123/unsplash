@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join | Unsplash</title>
+
+    <!-- css file -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+</head>
+<body>
+
+<div class="container-fluid join">
+
+<div class="row">
+
+<div class="col-sm-5 p-3" style="background-image: url('{% static "img/img2.jpg" %}');height:800px; background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;">
+
+<a href="/"><img src="{% static 'img/logo-w.svg'%}" alt=""></a>
+
+<h2 class="text-white text-center">Creation starts here</h2>
+<p class="text-center">Access 3,332,099 free, high-resolution photos you can’t find anywhere else</p>
+
+</div>
+
+<div class="col-sm-7 p-5 text-center">
+
+<a href="/"><img src="{% static 'img/symbol.png' %}" alt="" width="70px;"></a>
+<br> <br>
+
+<h3>Join Unsplash</h3> 
+
+<p>Already have an account? <a href="/account/login/">login</a></p>
+<br> <br>
+
+<!-- message -->
+
+{% if messages %}
+
+{% for message in messages %}
+
+<div class="alert alert-{{message.tags}}">
+{{message}}
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+
+<form method="POST"> {% csrf_token %}
+<div class="row">
+  <div class="col">
+    <input type="text" class="form-control" name="fname" required placeholder="First name" aria-label="First name">
+  </div>
+  <div class="col">
+    <input type="text" class="form-control" name="lname" required placeholder="Last name" aria-label="Last name">
+  </div>
+</div>
+<br>
+<input type="email" class="form-control" name="email" required placeholder="Email" aria-label="Email"> <br>
+
+<div class="row">
+  <div class="col">
+    <input type="text" class="form-control" name="uname" required placeholder="Username" aria-label="Username">
+  </div>
+  <div class="col">
+    <input type="password" class="form-control" name="pwd" required placeholder="Password" aria-label="Password">
+  </div>
+</div>
+<br> <br>
+<button class="btn btn-dark px-5" name="join">Join now</button>
+</form>
+
+<br>
+
+<p>or</p>
+
+<button class="btn btn-white border px-5 shadow-sm"> <img src="{% static 'img/glogo.png'%}" width="30px;" alt=""> Join with google</button>
+
+</div>
+
+
+</div>
+
+</div>
+    
+
+
+
+
+
+
+<!-- js file -->
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+
+</body>
+</html>

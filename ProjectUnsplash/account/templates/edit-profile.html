@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Edit Profile | Unsplash {% endblock title %}
+
+{% block EPclass %} btn text-danger px-5 {% endblock EPclass %} 
+
+{% block main %}
+
+<!-- message -->
+
+{% if messages %}
+
+{% for message in messages %}
+
+<div class="alert alert-{{message.tags}}">
+{{message}}
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+<h6>Edit Profile</h6>
+
+<br> <br>
+<form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+
+<div class="row">
+
+<div class="col-sm-4 p-2">
+
+<!-- user profile -->
+<img src="{{user.profile.image.url}}" alt="" style="border-radius:50%;width:250px;"> <br> <br>
+<input type="file" value="{{user.profile.image.url}}" name="img" class="form-control">
+</div>
+
+
+<!-- user details-->
+<div class="col-sm-8 p-2">
+
+<div class="row">
+  <div class="col">
+    <input type="text" name="fname" class="form-control" required placeholder="First name" value="{{user.first_name}}" aria-label="First name">
+  </div>
+  <div class="col">
+    <input type="text" name="lname" class="form-control" required placeholder="Last name" value="{{user.last_name}}" aria-label="Last name">
+  </div>
+</div>
+<br>
+<input type="email" name="em" class="form-control" required placeholder="Email" value="{{user.email}}" aria-label="Email"> <br>
+
+ <input type="text" disabled class="form-control" required placeholder="Username" value="{{user.username}}" aria-label="Username">
+
+</div>
+
+</div>
+
+<!-- end -->
+
+<!-- About section -->
+
+<br> <br>
+
+<h6>About</h6>
+
+<div class="row">
+
+<div class="col-sm-6 p-2">
+<input type="text" value="{{user.profile.location}}" name="loc" class="form-control" placeholder="Location"> <br>
+<textarea name="bio" cols="30" rows="10" placeholder="Bio" class="form-control"> {{user.profile.bio}} </textarea>
+</div>
+
+
+<div class="col-sm-6 p-2">
+
+<input type="url" value="{{user.profile.site}}" name="site" placeholder="Personal Site" class="form-control"> <br>
+<input type="text" value="{{user.profile.interest}}" name="inter" placeholder="Add Your Interest" class="form-control">
+
+</div>
+
+
+</div>
+
+<!-- end -->
+
+<br> <br>
+<!-- social -->
+
+<h6>Social</h6>
+
+<div class="row">
+
+
+<div class="col-sm-6 p-2">
+<input type="url" value="{{user.profile.instagram}}" name="insta" class="form-control" placeholder="Instagram">
+</div>
+
+<div class="col-sm-6 p-2">
+<input type="url" value="{{user.profile.twitter}}" name="twitt" class="form-control" placeholder="Twitter">
+</div>
+
+</div>
+
+<!-- End-->
+
+<!-- Donation -->
+<br> <br>
+<h6>Donation</h6>
+
+<input type="text" value="{{user.profile.paypal}}" name="paypl" class="form-control" placeholder="Paypal email or id">
+
+<br> <br>
+<button class="btn btn-dark px-5" name="update">Update Account</button>
+
+</form>
+
+</div>
+
+
+
+</div>
+
+</div>
+
+
+
+{% endblock main %}
+
+

@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+nav .container-fluid .collapse form input{
+    width: 530px;
+}
+
+nav .container-fluid .collapse form button{
+    margin-right:30px;
+}
+
+
+.main-section{
+  margin-top: 7rem;
+    height:450px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.main-section h1, span{
+    padding-left: 15rem;
+    font-weight:10000;
+}
+
+.main-section form{
+    display: flex;
+    margin-left: 15rem;
+}
+
+.main-section form input{
+    width: 700px;
+
+}
+
+.login form input{
+    width: 550px;
+    margin-left: 24rem;
+}
+
+.join .row .col-sm-5 h2{
+    padding-top : 10rem;
+}
+
+
+.public-profile{
+  margin-top: 10rem;
+}
+
+.public-profile .row .col-sm-4 {
+    padding-left:15rem;
+}
+
+.public-profile .row .col-sm-8{
+    padding-right: 15rem;
+}
+
+.submit {
+    width: 100%;
+    padding: 30px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+
+.submit p{
+    font-size: 20px;
+    
+}
+  
+  .drag-area {
+    border: 2px dashed lightgray;
+    margin: 10px auto;
+  }
+  
+  h3 {
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  
+  .drag-area .icon {
+    font-size: 50px;
+    color: #1683ff;
+  }
+  
+  .drag-area .header {
+    font-size: 20px;
+    font-weight: 500;
+    color: #34495e;
+  }
+  
+  .drag-area .support {
+    font-size: 12px;
+    color: gray;
+    margin: 10px 0 15px 0;
+  }
+  
+  .drag-area .button {
+    font-size: 20px;
+    font-weight: 500;
+    color: #1683ff;
+    cursor: pointer;
+  }
+  
+  /* .drag-area.active {
+    border: 2px solid #1683ff;
+  } */
+  
+  .drag-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+.photo-details{
+    display: none;
+}
+.photo-details #loc-tag{
+    display: none;
+
+}
+
+.show-photo-details{
+    display: block;
+    margin-top: 3rem;
+}
+
+
+  .submit .img-drop-area img{
+      width: 500px;
+  }
+  
+
+  .photo{
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+
+  .photo .gallery{
+    position: relative;
+    height: auto;
+    width: 90%;
+    margin: auto;
+    padding: 45px 0;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 4vh;
+    grid-auto-flow: dense;
+  }
+
+
+  .photo .gallery .img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+
+.photo .gallery .img img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+  transition: 0.5s ease-in-out;
+}
+
+.photo .gallery .img img:hover{
+  filter: brightness(1);
+  cursor: pointer;
+}
+
+.photo .gallery .user-profile img{
+  width: 45px;
+  border-radius: 50%;
+  position: relative;
+  bottom: 4rem;
+  left:2rem;
+  filter: brightness(1);
+}
+.photo .gallery .user-profile p{
+  position: relative;
+  bottom: 6.2rem;
+  left:5rem;
+  filter: brightness(1);
+}
+.photo .gallery .user-profile a{
+  position: relative;
+  bottom: 9rem;
+  left:21rem;
+  filter: brightness(1);
+  border-radius: 0.2rem;
+  transition: all 0.5s;
+  background-color: #fff;
+}
+.photo .gallery .user-profile a:hover{
+  color: black;
+}
+.photo .gallery .user-profile form #like-btn{
+  position: relative;
+  bottom: 55rem;
+  left:21rem;
+  filter: brightness(1);
+  border-radius: 0.2rem;
+  transition: all 0.5s;
+  background-color: #fff;
+}
+
+
+.photo .gallery .img .user-profile{
+  opacity: 0;
+  transition: all 0.5s;
+}
+.photo .gallery .img .user-profile:hover{
+  cursor: pointer;
+}
+.photo .gallery:hover .user-profile{
+  opacity: 1;
+}
+
+.img-size{
+  height: 800px !important;
+  width: 500px;
+  transition: all 1s;
+  
+}
+
+.img-size:hover{
+  height: 100% !important;
+  width: 100% !important;
+  cursor: zoom-in;
+  
+}
+
+
+
+/* .display-none{
+  display: none;
+}
+
+.display-block{
+  display: block;
+} */
+
+
+@media screen and (max-width:768px){
+
+  .photo .gallery{
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+}
+
+@media screen and (max-width:430px){
+
+  .photo .gallery{
+    display: grid;
+    grid-template-columns: auto;
+  }
+
+  .photo .gallery .img{
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+}

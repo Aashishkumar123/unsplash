@@ -1,0 +1,88 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %} {{users}} | Unsplash {% endblock title %}
+
+{% block section %}
+<div class="container public-profile">
+
+<div class="row">
+
+<div class="col-sm-4">
+<img src="{{users.profile.image.url}}" class="shadow" alt="" style="width:150px;border-radius:50%;">
+
+</div>
+
+<div class="col-sm-8 mt-3">
+<h1>{{users.first_name}} {{users.last_name}}</h1>
+<p class="text-dark">{{users.profile.bio}}</p>
+<a href="{{users.profile.paypal}}" class="nav-link text-muted"><i class="fab fa-paypal"></i> Support via PayPal</a>
+<p class="text-muted px-3"> <i class="fas fa-thumbtack"></i> {{users.profile.location}}</p>
+
+<a href="" class="mx-2 nav-link text-muted"> <i class="fab fa-twitter"></i> Twitter</a>
+<a href="" class="mx-2 nav-link text-muted"> <i class="fab fa-instagram"></i> Instgram</a>
+<br>
+<p class="px-3">Interests - <small>{{users.profile.interest}}</small></p>
+
+</div>
+
+</div>
+
+{% endblock section %}
+
+
+
+{% block section2 %}
+
+<div class="mt-5">
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="photo-tab" data-bs-toggle="tab" data-bs-target="#photo" type="button" role="tab" aria-controls="photo" aria-selected="true"><i class="fas fa-image"></i> Photos</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="likes-tab" data-bs-toggle="tab" data-bs-target="#likes" type="button" role="tab" aria-controls="likes" aria-selected="false"><i class="fas fa-heart"></i> Likes</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="collections-tab" data-bs-toggle="tab" data-bs-target="#collections" type="button" role="tab" aria-controls="collections" aria-selected="false"><i class="fas fa-layer-group"></i> Collections</button>
+  </li>
+</ul>
+
+
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="photo" role="tabpanel" aria-labelledby="photo-tab">
+  
+      {% comment %} <div class="row">
+          {% for photos in photo %}
+        <div class="col-sm-4">
+          <img src="{{photos.image.url}}" class="img-fluid">
+        </div>
+
+  {% endfor %}
+
+      </div> {% endcomment %}
+  </div>
+  <div class="tab-pane fade" id="likes" role="tabpanel" aria-labelledby="likes-tab">bjjnj</div>
+  <div class="tab-pane fade" id="collections" role="tabpanel" aria-labelledby="collections-tab">...</div>
+</div>
+
+</div>
+</div>
+
+{% endblock section2 %}
+
+  
+
+ 
+
+
+
+
+
+<!-- js file -->
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+
+</body>
+</html>

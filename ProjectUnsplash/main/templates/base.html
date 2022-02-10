@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %}{% endblock title %} </title>
+
+     <!-- css file -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+</head>
+<body>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-light mb-5 fixed-top bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="{% static 'img/logo-w.svg'%}" alt="">
+    </a>
+  </div>
+</nav>
+
+<br> <br> 
+
+<div class="container my-5">
+
+<div class="row">
+
+<div class="col-sm-4 text-center p-5">
+
+<h3>Account settings</h3> <br> <br>
+<a href="/account/edit-profile/" class=" {% block EPclass %} btn text-dark px-5 {% endblock EPclass %}  ">Edit Profile</a> <br> <br>
+<a href="/account/download-history/" class=" {% block DHclass %} btn text-dark px-5 {% endblock DHclass %}  ">Download History</a> <br> <br>
+<a href="/account/change-password/" class=" {% block CPclass %} btn text-dark px-5 {% endblock CPclass %}  ">Change Password</a> <br> <br>
+<a href="/account/close/" class=" {% block CAclass %} btn text-dark px-5 {% endblock CAclass %}  ">Close account</a> <br> <br> <br> <br>
+
+</div>
+
+
+
+<div class="col-sm-8 p-5">
+{% block main %}
+{% endblock main %}
+</div>
+
+
+<footer class="container mt-5 p-5">
+
+
+<h2>Unsplash</h2> <br>
+
+<div class="row mb-5">
+<div class="col-sm-2">
+<a href="" class="nav-link text-muted">About</a> 
+<a href="" class="nav-link text-muted">Blog</a> 
+<a href="" class="nav-link text-muted">Communtiy</a> 
+<a href="" class="nav-link text-muted">Join</a> 
+</div>
+
+<div class="col-sm-2">
+<a href="" class="nav-link text-muted">Developers/API</a> 
+<a href="" class="nav-link text-muted">Press</a> 
+<a href="" class="nav-link text-muted">Help Center</a> 
+</div>
+
+<div class="col-sm-6">
+<a href="" class="nav-link text-muted">Unsplash for Education</a> 
+<a href="" class="nav-link text-muted">Unsplash for iOS</a> 
+<a href="" class="nav-link text-muted">Official Apps</a> 
+</div>
+
+<div class="col-sm-2">
+<a href="" class="mx-2 text-muted" style="font-size:22px;"> <i class="fab fa-twitter"></i></a>
+<a href="" class="mx-2 text-muted" style="font-size:22px;"> <i class="fab fa-facebook"></i></a>
+<a href="" class="mx-2 text-muted" style="font-size:22px;"> <i class="fab fa-instagram"></i></a>
+</div>
+<hr class="text-muted">
+<br> <br>
+
+
+<div class="row">
+<div class="col-sm-8">
+<img style="width:25px;" src="{% static 'img/symbol.png' %}"  alt="">
+ Make something awesome.
+</div>
+
+<div class="col-sm-2">
+<a href="" class="nav-link mx-3">Privacy Policy</a>
+</div>
+<div class="col-sm-1">
+<a href="" class="nav-link">Terms</a>
+</div>
+<div class="col-sm-1">
+<a href="" class="nav-link">Security</a>
+</div>
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- js file -->
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+
+</body>
+</html>

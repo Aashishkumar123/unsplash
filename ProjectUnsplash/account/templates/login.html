@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Unsplash</title>
+
+     <!-- css file -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+</head>
+<body>
+
+
+
+<div class="container text-center login my-5">
+
+<a href="/"><img src="{% static 'img/symbol.png' %}" alt="" width="70px;"></a>
+<br> <br>
+
+<h3>Login</h3> <br>
+
+
+<!-- message -->
+
+{% if messages %}
+
+{% for message in messages %}
+
+<div class="alert alert-{{message.tags}}">
+{{message}}
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+<form method="POST"> {% csrf_token %}
+<input type="text" name="uname" required placeholder="username" class="form-control"> <br>
+<input type="password" name="pwd" required placeholder="password" class="form-control"> <br>
+<button class="btn btn-dark px-5" name="login">Login</button>
+</form>
+
+<br>
+
+<p>or</p>
+
+<button class="btn btn-white border px-5 shadow-sm"> <img src="{% static 'img/glogo.png'%}" width="30px;" alt=""> Login with google</button>
+<br> <br> <br>
+<p>Don't have an account? <a href="/account/join/">join</a></p>
+
+</div>
+
+
+
+
+
+
+
+
+<!-- js file -->
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    
+</body>
+</html>

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %} Close Account | Unsplash {% endblock title %}
+
+{% block CAclass %} btn text-danger px-5 {% endblock CAclass %} 
+
+{% block main %}
+<!-- message -->
+
+{% if messages %}
+
+{% for message in messages %}
+
+<div class="alert alert-{{message.tags}}">
+{{message}}
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+<h5>Close Account</h5> <br>
+<p><b class="text-danger">Warning</b>: closing your account is irreversible. It deletes all of your photos, collections, and stats.</p>
+
+<form method="POST" id="mydelform"> {% csrf_token %}
+<input type="password" required name="pwd" class="form-control" placeholder="Current Password"> <br> 
+</form>
+
+<button data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-danger px-5" name="delete">Delete Account</button>
+
+
+
+<div class="modal" id="delete" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Close Account</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Once you delete your account, you will not be able to recover your photos, stats, or info. Are you sure you want to delete your account?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="delAccount()" class="btn btn-danger px-5"><i class="fas fa-trash-alt"></i> Delete Account</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock main %}

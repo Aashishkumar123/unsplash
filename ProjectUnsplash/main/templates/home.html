@@ -1,0 +1,227 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+   <title>{% block title %} Beautiful Free Images &amp; Pictures | Unsplash{% endblock title %}</title>
+
+   <!-- css file -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+        {% include 'nav.html' %}
+
+    {% block section %}
+    <!-- section-->
+        <section class="container-fluid main-section p-5" style="background-image: url('{% static "img/img1.jpg" %}')">
+        
+        <h1 class="mt-3">Unsplash</h1>
+        <span>The internet’s source of freely-usable images.
+Powered by creators everywhere.</span>
+
+        <form class="mt-5">
+        <input type="text" class="form-control" placeholder="Search free and high resolution photos">
+        <button class="btn btn-dark"> Search</button>
+        </form>
+
+        </section>
+{% endblock section %}
+
+
+{% block section2 %}
+
+
+{% endblock section2 %}
+
+
+
+{% block photos %}
+
+
+        <div class="photo" id="photo">
+                <div class="gallery">
+                    {% for photos in photo %}
+                    
+                        <div class="img" id="img{{photos.id}}">
+                            <img src="{{photos.image.url}}" alt="">
+
+                        <div class="user-profile" id="user-profile">
+                            <img src="{{photos.user.profile.image.url}}" id="photo{{photos.id}}" alt="">
+                            <p class="text-white px-2">{{photos.user.first_name}} {{photos.user.last_name}}</p>
+                            <a href="{{photos.image.url}}" class="btn text-muted px-3 py-2" download><i class="fas fa-arrow-down"></i></a>
+                            <form>
+                        <button id="like-btn" class="btn btn-light text-muted px-3 py-1"><i class="fas fa-heart"></i></button>
+                        </form>
+                        </div>
+                        {% comment %} <style>
+                            .photo .gallery .img .user-profile #photo{{photos.id}}{
+                              opacity: 0;
+                              transition: all 0.5s;
+                            }
+                            .photo .gallery:hover .user-profile #photo{{photos.id}}{
+                                 opacity: 1;
+                                } 
+                            </style> {% endcomment %}
+                        </div>
+
+
+
+<!-- user profile Modal -->
+<div class="modal fade" id="{{photos.user}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> <br> <br>
+        <img src="{{photos.user.profile.image.url}}" style="width:50px;border-radius: 50%;" alt="">
+        <p class="px-2" style="display: inline-block;">{{photos.user.first_name}} {{photos.user.last_name}} | @{{photos.user}}</p>
+
+        <div class="p-3">
+        {% for p in photo %}
+                {% if p.user == photos.user %}
+
+                    <img src="{{p.image.url}}" class="img-fluid" style="width:130px;height:130px;" alt="">
+                    
+                {% endif %}
+        {% endfor %}
+        </div>
+      </div>
+      
+        <a class="btn btn-primary" href="/{{photos.user}}/">View Profile</a>
+     
+    </div>
+  </div>
+</div>
+
+           <script>
+           
+           document.getElementById('photo{{photos.id}}').addEventListener('mouseenter' , function(){
+            setTimeout(function(){
+                $(document).ready(function()
+            {
+                $(`#{{photos.user}}`).modal('show');
+            });
+            }, 1000);
+           })
+
+           </script>    
+
+
+
+<!-- Photo Modal -->
+<div class="modal fade" id="image{{photos.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+    <div class="modal-header">
+    <img src="{{photos.user.profile.image.url}}" style="width:40px;border-radius:50%;" alt="">
+    <p class="px-2 pt-1" style="display: inline-block;">{{photos.user.first_name}} {{photos.user.last_name}}</p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">    
+    <div class="text-center">
+    <img src="{{photos.image.url}}" id="img-size" class="img-fluid img-size" alt=""></div>
+      </div>
+
+      <div class="text-center py-3">
+      <button class="btn btn-light btn-outline text-muted border px-3"><i class="fas fa-heart"></i></button>
+      <button class="btn btn-light text-muted border px-3"><i class="fas fa-plus"></i></button>
+      <a download href="{{photos.image.url}}" class="btn btn-light text-muted border px-3">Download <i class="fas fa-arrow-down"></i></a>
+      </div>
+
+      <hr>
+
+      <div class="px-5 py-2">
+            <div class="row">
+
+                <div class="col-sm-2">
+                    <p>Views</p> 
+                    <p>5423</p>
+                </div>
+
+                <div class="col-sm-2">
+                    <p>Downloads</p>
+                    <p>234</p>
+                </div>
+
+                <div class="col-sm-4">
+                    <p>Published in</p>
+                    <p>{{photos.datetime}}</p>
+                </div>
+
+                <div class="col-sm-4">
+                   <a href="#" class="btn btn-light border py-2" data-bs-toggle="modal" data-bs-target="#share{{photos.id}}"><i class="fas fa-share"></i> Share</a>
+                   <a href="#" class="btn btn-light border py-2"><i class="fas fa-info-circle"></i> Info</a>
+                   <a href="#" class="btn btn-light border py-2"><i class="fas fa-ellipsis-h"></i></a>
+                </div>
+
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+            <script>
+           
+           document.getElementById('img{{photos.id}}').addEventListener('click' , function(){
+            
+                $(document).ready(function()
+            {
+                $(`#image{{photos.id}}`).modal('show');
+            });
+            
+           })
+
+           
+
+           </script>   
+
+
+<!-- Share button Modal -->
+<div class="modal fade" id="share{{photos.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="margin: -20vh auto 0px auto !important;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Share</h5> <br> <br>
+          <small class="p-0">Photo by {{photos.user.first_name}} {{photos.user.last_name}}</small>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <a href="" class="btn btn-light border py-2"><i class="fab fa-facebook"></i> Facebook</a>
+          <a href="" class="btn btn-light border py-2"><i class="fab fa-twitter"></i> Twitter</a>
+          <a href="" class="btn btn-light border py-2"><i class="fab fa-reddit-alien"></i> Reddit</a> <br> <br>
+          <a href="" style="font-size:x-small" class="btn btn-light border py-2">http://127.0.0.1:8000/{{photos.image.url}}</a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+                    {% endfor %}
+                </div>
+        </div>
+
+        
+
+
+{% endblock photos %}
+
+
+    <!-- js file -->
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  
+
+</body>
+</html>
